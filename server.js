@@ -21,13 +21,15 @@ function getPerson(req, response) {
     console.log("Retreiving person with id: ", id);
 
     getPersonFromDb(id, function(err, result){
+        console.log("Back from the getPersonFromDb result: ", res);
 
         if (error || result == null || result.length != 1) {
             response.status(500).json({success:false, data: error});
-        };
+        } else {
+            response.json(result[0]);
+        }
 
-        console.log("Back from the getPersonFromDb result: ", res);
-        response.json(result);
+        
     })
 };
 
