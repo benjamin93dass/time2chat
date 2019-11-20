@@ -24,13 +24,13 @@ function getPerson(req, response) {
         console.log("Back from the getPersonFromDb result: ", result);
 
         if (err || result == null || result.length != 1) {
-            response.status(500).json({success:false, data: error});
+            res.status(500).json({success:false, data: error});
         } else {
-            response.json(result[0]);
+            res.json(result[0]);
         }
 
         
-    })
+    });
 };
 
 function getPersonFromDb(id, callback) {
