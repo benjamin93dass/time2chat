@@ -14,19 +14,16 @@ app.listen(app.get("port"), function() {
     console.log("Now listening on port for connections on port: ", app.get("port"));
 });
 
-function getPerson(req, res) {
+function getPerson(req, response) {
     console.log("Getting person information.")
 
     var id = req.query.id;
     console.log("Retreiving person with id: ", id);
 
-    getPersonFromDb(id, function(err, res){
+    getPersonFromDb(id, function(err, result){
         console.log("Back from the getPersonFromDb result: ", res);
+        response.json(result);
     })
-
-    var result = {id: 238, first: "John", last: "Smith", birthdate: "1950-02-05"};
-
-    res.json(result);
 };
 
 function getPersonFromDb(id, callback) {
