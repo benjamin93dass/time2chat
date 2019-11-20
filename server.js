@@ -20,16 +20,15 @@ function getPerson(req, response) {
     var id = req.query.id;
     console.log("Retreiving person with id: ", id);
 
-    getPersonFromDb(id, function(err, result){
+    getPersonFromDb(id, function(error, result){
         console.log("Back from the getPersonFromDb result: ", result);
 
-        if (err || result == null || result.length != 1) {
+        if (error || result == null || result.length != 1) {
             response.status(500).json({success:false, data: error});
         } else {
             response.json(result[0]);
         }
 
-        
     });
 };
 
