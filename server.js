@@ -26,7 +26,7 @@ function getPerson(req, res) {
 
     var result = {id: 238, first: "John", last: "Smith", birthdate: "1950-02-05"};
 
-    res.json(res);
+    res.json(result);
 };
 
 function getPersonFromDb(id, callback) {
