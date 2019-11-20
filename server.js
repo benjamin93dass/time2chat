@@ -24,9 +24,9 @@ function getPerson(req, response) {
         console.log("Back from the getPersonFromDb result: ", result);
 
         if (err || result == null || result.length != 1) {
-            res.status(500).json({success:false, data: error});
+            response.status(500).json({success:false, data: error});
         } else {
-            res.json(result[0]);
+            response.json(result[0]);
         }
 
         
