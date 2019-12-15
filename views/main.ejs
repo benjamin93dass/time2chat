@@ -83,11 +83,16 @@
                    socket.on('get users', function(data){
                        var html = "";
                        for (i = 0;i < data.length;i++){
-                           html += '<li class="list-group-item">' + data[i] + '</li>';
+                           html += '<button class="list-group-item" onclick="display()">' + data[i] + '</button>';
                        }
                        $users.html(html);
                    })
                })
+           </script>
+           <script>
+                function display() {
+                    alert("I am an alert box!");
+                }   
            </script>
    </body>
 </html>

@@ -13,6 +13,22 @@ connections = [];
 server.listen(process.env.PORT || 5000);
 
 app.get('/', function(req, res){
+    console.log("Getting person information.")
+
+    var id = req.query.id;
+    console.log("Retreiving person with id: ", id);
+
+    getPersonFromDb(id, function(error, result){
+        console.log("Back from the getPersonFromDb result: ", result);
+
+        if (error || result == null || result.length != 1) {
+            response.status(500).json({success:false, data: error});
+        } else {
+            console.log(res.rows);;
+        }
+
+    });
+
     res.render("main.ejs");
 });
 app.get("/getPerson", getPerson)
@@ -47,22 +63,12 @@ io.sockets.on('connection', function(socket){
     }
 });
 
+app.get('/getdata', function(request, response) {
+    
+  })
+
 function getPerson(req, response) {
-    console.log("Getting person information.")
-
-    var id = req.query.id;
-    console.log("Retreiving person with id: ", id);
-
-    getPersonFromDb(id, function(error, result){
-        console.log("Back from the getPersonFromDb result: ", result);
-
-        if (error || result == null || result.length != 1) {
-            response.status(500).json({success:false, data: error});
-        } else {
-            response.json(result[0]);
-        }
-
-    });
+    
 };
 
 function getPersonFromDb(id, callback) {
