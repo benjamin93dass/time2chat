@@ -24,7 +24,7 @@ app.get('/', function(req, res){
         if (error || result == null || result.length != 1) {
             response.status(500).json({success:false, data: error});
         } else {
-            console.log(res.rows);
+            console.log(result.rows);
         }
 
     });
