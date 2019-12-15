@@ -27,7 +27,7 @@ app.get('/', function(req, res){
     });
 
     res.render("main.ejs");
-    res.send("result");
+    res.json(result);
 });
 app.get("/getPerson", getPerson)
 

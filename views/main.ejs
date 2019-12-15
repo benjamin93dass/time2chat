@@ -94,11 +94,11 @@
                    })
                })
 
-                $.getJSON('/', function(result) {
-                    var obj = JSON.parse(result);
-                    var html = result;
-                    $past_users.html(html);
-                    console.log(result);
+                $.ajax({
+                    url: '/',
+                    complete: function(data) {
+                        console.log(data);
+                    }
                 });
            </script>
            <script>
