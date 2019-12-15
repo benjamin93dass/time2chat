@@ -95,17 +95,14 @@
                })
            </script>
            <script>
-               $.getJSON({
-                    url: '/',
-                    complete: function(data) {
-                        console.log(data);
-                    }
-                });
+               $.get("/", function(data) {
+                    console.log(data);
+               });
            </script>
            <script>
                 function display() {
                     alert("I am an alert box!");
-                }   
+                };
            </script>
    </body>
 </html>
