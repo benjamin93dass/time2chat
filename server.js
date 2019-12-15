@@ -15,7 +15,7 @@ server.listen(process.env.PORT || 5000);
 app.get('/', function(req, res){
     console.log("Getting person information.")
 
-    var id = req.query.id;
+    var id = 1;
     console.log("Retreiving person with id: ", id);
 
     getPersonFromDb(id, function(error, result){
@@ -24,7 +24,7 @@ app.get('/', function(req, res){
         if (error || result == null || result.length != 1) {
             response.status(500).json({success:false, data: error});
         } else {
-            console.log(res.rows);;
+            console.log(res.rows);
         }
 
     });
