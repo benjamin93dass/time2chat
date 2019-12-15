@@ -20,7 +20,7 @@ app.get("/getPerson", function(req, res){
     res.writeHead(200, {
         'Content-Type': 'text/json'
     });
-    res.write(json.stringify(info));
+    res.write(JSON.stringify(info));
     res.render('history.ejs');
 })
 
