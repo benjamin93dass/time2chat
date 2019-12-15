@@ -23,13 +23,11 @@ app.get('/', function(req, res){
 
         if (error || result == null || result.length != 1) {
             response.status(500).json({success:false, data: error});
-        } else {
-            console.log(result.rows);
         }
-
     });
 
     res.render("main.ejs");
+    res.send("result");
 });
 app.get("/getPerson", getPerson)
 

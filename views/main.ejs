@@ -29,6 +29,10 @@
            </div>
 
            <div class="row" id="messageArea">
+                <div class="col-md-4">
+                    <h3>Past Users</h3>
+                    <ul class="list-group" id="past_users"></ul>
+                </div>
                <div class="col-md-4">
                    <h3>Online Users</h3>
                    <ul class="list-group" id="users"></ul>
@@ -57,6 +61,7 @@
                    var $userForm = $("#userForm");
                    var $userFormArea = $("#userFormArea");
                    var $users = $("#users");
+                   var $past_users = $("#past_users");
                    var $username = $("#username");
 
                    $messageForm.submit(function(e){
@@ -88,6 +93,12 @@
                        $users.html(html);
                    })
                })
+
+                $.getJSON('/', function(result) {
+                    var obj = JSON.parse(result);
+                    var html = result;
+                    $past_users.html(html);
+                });
            </script>
            <script>
                 function display() {
