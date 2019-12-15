@@ -15,14 +15,7 @@ server.listen(process.env.PORT || 5000);
 app.get('/', function(req, res){
     res.render("main.ejs");
 });
-app.get("/getPerson", function(req, res){
-    var info = getPerson();
-    res.writeHead(200, {
-        'Content-Type': 'text/json'
-    });
-    res.write(JSON.stringify(info));
-    res.render('history.ejs');
-})
+app.get("/getPerson", getPerson)
 
 io.sockets.on('connection', function(socket){
     connections.push(socket);
@@ -57,7 +50,7 @@ io.sockets.on('connection', function(socket){
 function getPerson(req, response) {
     console.log("Getting person information.")
 
-    var id = 1;
+    var id = req.query.id;
     console.log("Retreiving person with id: ", id);
 
     getPersonFromDb(id, function(error, result){
@@ -66,7 +59,7 @@ function getPerson(req, response) {
         if (error || result == null || result.length != 1) {
             response.status(500).json({success:false, data: error});
         } else {
-            return result;
+            response.json(result[0]);
         }
 
     });
